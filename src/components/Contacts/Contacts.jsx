@@ -12,7 +12,7 @@ const Contacts = props => {
   let filterData = data.filter(el => {
     return el.name.toLowerCase().includes(filter);
   });
-  console.log(data);
+
   const handleOnClick = evt => {
     props.onDelete(evt.currentTarget.id);
   };

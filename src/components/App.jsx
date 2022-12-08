@@ -32,7 +32,6 @@ export class App extends Component {
   }
 
   formSubmitHandler = data => {
-    console.log(this.state.contacts);
     this.state.contacts.map(el => {
       if (el.name.toLowerCase() === data.name.toLowerCase()) {
         alert(`${data.name} is already in contacts.`);
