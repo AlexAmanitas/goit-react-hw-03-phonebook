@@ -55,9 +55,9 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <h2>Phonebook</h2>
+        <h2 style={{ color: '#ff6c00' }}>Phonebook</h2>
         <Form onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 style={{ color: '#ff6c00' }}>Contacts</h2>
         <Filter onChange={this.handleChangeFilter} />
         <Contacts
           onDelete={this.handleClickDelete}
