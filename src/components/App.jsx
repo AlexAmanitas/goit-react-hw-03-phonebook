@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from 'components/Form';
 import Filter from 'components/Filter';
+import uniqid from 'uniqid';
 import Contacts from 'components/Contacts';
 
 export class App extends Component {
@@ -20,6 +21,7 @@ export class App extends Component {
   }
 
   formSubmitHandler = data => {
+    data.id = uniqid();
     let check = false;
     if (this.state.contacts !== '') {
       check = this.state.contacts.find(
