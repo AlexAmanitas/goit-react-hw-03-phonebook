@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Form from 'components/Form';
 import Filter from 'components/Filter';
-import uniqid from 'uniqid';
 import Contacts from 'components/Contacts';
 
 export class App extends Component {
@@ -12,8 +11,11 @@ export class App extends Component {
 
   componentDidMount() {
     const dataParsed = JSON.parse(localStorage.getItem('phoneBook'));
-    if (!dataParsed) return;
-    this.setState({ contacts: dataParsed });
+    if (!dataParsed || dataParsed === '') {
+      this.setState({ contacts: [] });
+    } else {
+      this.setState({ contacts: dataParsed });
+    }
   }
 
   componentDidUpdate() {
@@ -21,13 +23,9 @@ export class App extends Component {
   }
 
   formSubmitHandler = data => {
-    data.id = uniqid();
-    let check = false;
-    if (this.state.contacts !== '') {
-      check = this.state.contacts.find(
-        el => el.name.toLowerCase() === data.name.toLowerCase()
-      );
-    }
+    const check = this.state.contacts.find(
+      el => el.name.toLowerCase() === data.name.toLowerCase()
+    );
     return check
       ? alert(`${data.name} is already exist.`)
       : this.setState({ contacts: [...this.state.contacts, data] });
